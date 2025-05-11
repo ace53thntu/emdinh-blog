@@ -6,6 +6,15 @@
       "name": "github"
     },
     "text": "GitHub",
-    "link": "https://github.com/louisescher/spectre"
+    "link": "https://github.com/ace53thntu"
+  },
+  {
+    "id": 2,
+    "icon": {
+      "type": "lucide",
+      "name": "facebook"
+    },
+    "text": "Facebook",
+    "link": "https://www.facebook.com/i.am.em.dinh"
   }
 ]

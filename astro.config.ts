@@ -19,18 +19,20 @@ export default defineConfig({
     mdx(),
     sitemap(),
     spectre({
-      name: "Spectre",
+      name: "Em Dinh",
       openGraph: {
         home: {
-          title: "Spectre",
-          description: "A minimalistic theme for Astro.",
+          title: "Em Dinh | Software Engineer",
+          description:
+            "Personal blog and portfolio of Em Dinh, sharing thoughts and experiences on software development, web technologies, and more.",
         },
         blog: {
-          title: "Blog",
-          description: "News and guides for Spectre.",
+          title: "Blog | Em Dinh",
+          description: "Technical articles, tutorials, and insights on software development and web technologies.",
         },
         projects: {
-          title: "Projects",
+          title: "Projects | Em Dinh",
+          description: "Showcase of personal and professional software projects and contributions.",
         },
       },
       giscus: {
