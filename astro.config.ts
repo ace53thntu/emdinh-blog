@@ -8,6 +8,13 @@ import spectre from "./package/src";
 import vercel from "@astrojs/vercel";
 import { spectreDark } from "./src/ec-theme";
 
+const excludePages = [
+  "https://emdinh.dev/blog/",
+  "https://emdinh.dev/projects/",
+  "https://emdinh.dev/blog/getting-started/",
+  "https://emdinh.dev/projects/spectre/",
+];
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://emdinh.dev",
@@ -17,7 +24,9 @@ export default defineConfig({
       themes: [spectreDark],
     }),
     mdx(),
-    sitemap(),
+    sitemap({
+      filter: (page) => !excludePages.includes(page),
+    }),
     spectre({
       name: "Em Dinh",
       openGraph: {
