@@ -5,7 +5,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import spectre from "./package/src";
 
-import node from "@astrojs/node";
+import vercel from "@astrojs/vercel";
 import { spectreDark } from "./src/ec-theme";
 
 // https://astro.build/config
@@ -33,20 +33,22 @@ export default defineConfig({
           title: "Projects",
         },
       },
-      giscus: {
-        repository: "louisescher/spectre",
-        repositoryId: "R_kgDONjm3ig",
-        category: "General",
-        categoryId: "DIC_kwDONjm3is4ClmBF",
-        mapping: "pathname",
-        strict: true,
-        reactionsEnabled: true,
-        emitMetadata: false,
-        lang: "en",
-      },
+      // giscus: {
+      //   repository: "louisescher/spectre",
+      //   repositoryId: "R_kgDONjm3ig",
+      //   category: "General",
+      //   categoryId: "DIC_kwDONjm3is4ClmBF",
+      //   mapping: "pathname",
+      //   strict: true,
+      //   reactionsEnabled: true,
+      //   emitMetadata: false,
+      //   lang: "en",
+      // },
     }),
   ],
-  adapter: node({
-    mode: "standalone",
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
   }),
 });
