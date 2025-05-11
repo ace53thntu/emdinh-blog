@@ -3,17 +3,25 @@
     "id": 1,
     "icon": {
       "type": "lucide",
-      "name": "cake"
+      "name": "briefcase"
     },
-    "text": "32 years old"
+    "text": "Software Engineer"
   },
   {
     "id": 2,
     "icon": {
       "type": "lucide",
+      "name": "cake"
+    },
+    "text": "32 years old"
+  },
+  {
+    "id": 3,
+    "icon": {
+      "type": "lucide",
       "name": "earth"
     },
     "type": "lucide",
-    "text": "From Vietnam"
+    "text": "Nha Trang city, Vietnam"
   }
 ]

@@ -12,9 +12,27 @@
     "id": 2,
     "icon": {
       "type": "lucide",
+      "name": "linkedin"
+    },
+    "text": "LinkedIn",
+    "link": "https://www.linkedin.com/in/em-dinh"
+  },
+  {
+    "id": 3,
+    "icon": {
+      "type": "lucide",
       "name": "facebook"
     },
     "text": "Facebook",
     "link": "https://www.facebook.com/i.am.em.dinh"
+  },
+  {
+    "id": 3,
+    "icon": {
+      "type": "lucide",
+      "name": "twitter"
+    },
+    "text": "Twitter",
+    "link": "https://x.com/emladev"
   }
 ]

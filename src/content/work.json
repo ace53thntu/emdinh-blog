@@ -1,9 +1,51 @@
 [
   {
+    "id": 7,
+    "duration": "05/2015 - 12/2015",
+    "company": "Sweetsoft Ltd",
+    "title": "Web Developer",
+    "description": "First job, started as an intern in November 2014 and returned in June 2015. Specialized in converting PSD design files to HTML. Self-studied NodeJS, MongoDB, and Gulp."
+  },
+  {
+    "id": 6,
+    "duration": "05/2016 - 10/2017",
+    "company": "Bizzon Ltd",
+    "title": "Full-stack Javascript Developer",
+    "description": "Worked as a frontend developer using Javascript, Jquery, AngularJS, and Bootstrap, converting designs to HTML/CSS. Built a mobile app called 'Kiddy Channel' using Ionic. From 12/2016, transitioned to the backend team, working on projects using NodeJS, HapiJS, and MongoDB."
+  },
+  {
+    "id": 5,
+    "duration": "10/2017 - 06/2018",
+    "company": "Self-employed",
+    "title": "Freelancer",
+    "description": "Worked on insurance projects using React Native for mobile, NodeJS (Typescript, Molecular framework) for backend, and VueJS for frontend. Developed a crypto wallet mobile app using Flutter, a food delivery app (DingDong), and an e-commerce mobile app (Aduhaz) using React Native."
+  },
+  {
+    "id": 4,
+    "duration": "06/2018 - 06/2020",
+    "company": "INFOdation Ltd",
+    "title": "Software Engineer",
+    "description": "Worked as a senior frontend developer using ReactJS. Supported backend team in implementing RESTful APIs with NodeJS and MongoDB. Built a Jira automation add-on using ExpressJS, PostgresDB, and ReactJS. Participated in mobile projects using React Native, ExpressJS, TypeORM, and PostgresDB."
+  },
+  {
+    "id": 3,
+    "duration": "06/2020 - 10/2022",
+    "company": "DEEPCACTUS Ltd",
+    "title": "FrontEnd Developer",
+    "description": "Worked at a startup specializing in DMP, DSP, and Ad Networks. Built source code structure and supported the frontend team using the ReactJS ecosystem (Redux, React-router, react-query). Clarified requirements with PM/PO and transferred them to the team. Developed a Javascript SDK for tracking, collecting user data, and displaying ads based on OpenRTB standards. Provided client support for SDK usage."
+  },
+  {
+    "id": 2,
+    "duration": "2023 - 2025",
+    "company": "Arent Vietnam",
+    "title": "FrontEnd Developer",
+    "description": "I work at a Japanese company specializing in digital transformation in the construction industry. Participate in developing Uranus projects, supporting management to update the construction progress of air conditioning systems for large buildings through 3D models from AutoDesk designs, and collecting 360-degree images to review the progress on the system. In addition, I also participate in projects such as: Efexis - simulating the factory's operating system from design drawings and connecting with IoT devices; Hirose - digitizing the system for a temporary bridge supplier."
+  },
+  {
     "id": 1,
-    "duration": "2024 - present",
-    "company": "Astro Community",
-    "title": "Astro Theme",
-    "description": "Existing as an Astro theme for anyone to use."
+    "duration": "2022 - Present",
+    "company": "ABC Software Solution Ltd",
+    "title": "Senior Fullstack Developer",
+    "description": "Worked at the YaraConnect team for Yara International's Digital Labs. Maintained the Admin Portal service using ReactJS, optimized development processes, and reduced bugs. Maintained the YC mobile app using React Native to support farmers and retailers in 9 countries. Developed backend services using ExpressJS, PostgresDB, NestJS, AWS SQS, Kafka, Redis, and MongoDB, including Loyalty, Intermediate, Reporting, and Discount-engine services integrated with AWS Redshift and Product-catalog systems."
   }
 ]
