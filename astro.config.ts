@@ -10,7 +10,7 @@ import { spectreDark } from "./src/ec-theme";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://emdinh-blog.vercel.app",
+  site: "https://emdinh.dev",
   output: "static",
   integrations: [
     expressiveCode({
@@ -33,17 +33,17 @@ export default defineConfig({
           title: "Projects",
         },
       },
-      // giscus: {
-      //   repository: "louisescher/spectre",
-      //   repositoryId: "R_kgDONjm3ig",
-      //   category: "General",
-      //   categoryId: "DIC_kwDONjm3is4ClmBF",
-      //   mapping: "pathname",
-      //   strict: true,
-      //   reactionsEnabled: true,
-      //   emitMetadata: false,
-      //   lang: "en",
-      // },
+      giscus: {
+        repository: "ace53thntu/emdinh-blog",
+        repositoryId: "R_kgDOOoButw",
+        category: "General",
+        categoryId: "DIC_kwDOOoBut84CqBIS",
+        mapping: "pathname",
+        strict: true,
+        reactionsEnabled: true,
+        emitMetadata: false,
+        lang: "en",
+      },
     }),
   ],
   adapter: vercel({
