@@ -105,6 +105,35 @@ After countless hours of scouring docs, chugging coffee, and muttering “there�
 
 Here’s the gist: instead of processing `processRetailerTransaction` in the `eachMessage` handler, the consumer pushes the task to a **BullMQ** queue. A separate worker (or workers) then picks up the task, queries the database, hits the API, and does all the heavy lifting without slowing down the consumer. This approach keeps the consumer lean and mean, fetching messages at full speed while **BullMQ** handles the grunt work.
 
+Example:
+
+```javascript
+await this.consumer.run({
+  autoCommit: true, // Auto-commit offsets after pushing to BullMQ
+  eachMessage: async ({ topic, partition, message }) => {
+    this.logger.log(`Received message: Partition ${partition}, Offset ${message.offset}`);
+    
+    const jobData = {
+      value: message.value.toString(),
+      topic,
+      partition,
+      offset: message.offset,
+    };
+
+    /**
+    * Push to the appropriate BullMQ queue, this `await` is very fast
+    * So, it will not block the consumer
+    */
+    await queue.add('process-transaction', jobData, {
+      attempts: 3, // Retry up to 3 times on failure
+      backoff: { type: 'exponential', delay: 1000 },
+    });
+
+    this.logger.log(`Pushed to BullMQ queue`);
+  },
+});
+```
+
 **How It Works**:
 
 - The KafkaJS consumer grabs a message and pushes it to a BullMQ queue with metadata (e.g., topic, partition, offset).
