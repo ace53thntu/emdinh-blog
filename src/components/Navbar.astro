@@ -96,12 +96,22 @@ const path = Astro.url.pathname;
         e.target.dataset.loaded = 'true';
         
         try {
+          // Try to load pagefind directly from where it's generated
           window.pagefind = await import("/pagefind/pagefind.js");
+          console.log("Pagefind loaded successfully");
         } catch (error) {
           console.error("Failed to load pagefind:", error);
-          results.innerHTML = '<p style="margin-top: 0;">Search functionality unavailable</p>';
-          results.classList.add('active');
-          return;
+          
+          // Try an alternative path as fallback
+          try {
+            window.pagefind = await import("/pagefind/pagefind.js");
+            console.log("Pagefind loaded from fallback path");
+          } catch (secondError) {
+            console.error("Failed to load pagefind from fallback path:", secondError);
+            results.innerHTML = '<p style="margin-top: 0;">Search functionality unavailable</p>';
+            results.classList.add('active');
+            return;
+          }
         }
       }
 
