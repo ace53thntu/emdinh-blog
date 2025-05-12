@@ -21,7 +21,7 @@ async function generateOGImage(title: string, outputPath: string) {
       flex-direction: column;
       width: 1200px; 
       height: 630px; 
-      background: linear-gradient(135deg, #9953F3 0%, #7C3AED 100%);
+      background: linear-gradient(135deg, #FF3C3C 0%, #FF6666 100%);
       color: white;
       padding: 80px;
     ">
