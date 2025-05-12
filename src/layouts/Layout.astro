@@ -6,6 +6,7 @@ import Background from '../components/Background.astro';
 import Navbar from '../components/Navbar.astro';
 import LayoutGrid from '../components/LayoutGrid.astro';
 import { name, themeColor, twitterHandle } from 'spectre:globals';
+import path from 'path';
 
 interface Props {
 	title: string;
@@ -19,10 +20,28 @@ interface Props {
 }
 
 const { title, description, image, pagefindIgnore, article } = Astro.props;
-// Use the dynamic OG image generator for all pages
-const ogImageUrl = image?.src || `/api/og/${encodeURIComponent(title)}`;
+const isHomePage = Astro.url.pathname === "/" || Astro.url.pathname === "";
+
+// Get the current path to determine which OG image to use
+const currentPath = Astro.url.pathname;
+let ogImagePath: string;
+
+if (image?.src) {
+  // Use custom image if provided
+  ogImagePath = image.src;
+} else if (isHomePage) {
+  // Use home.png for home page
+  ogImagePath = "/og/home.png";
+} else {
+  // For other pages, use a slug based on the URL path or title
+  const slug = currentPath.split("/").pop() || title.toLowerCase().replace(/\s+/g, "-");
+  ogImagePath = `/og/${slug}.png`;
+}
+
 const siteUrl = Astro.site?.toString() || 'https://emdinh.dev';
 const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
+// Ensure OG image URL is absolute for social sharing
+const ogImageUrl = new URL(ogImagePath, siteUrl).toString();
 ---
 
 <!DOCTYPE html>
