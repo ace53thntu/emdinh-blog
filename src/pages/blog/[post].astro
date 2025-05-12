@@ -59,9 +59,6 @@ const { Content, headings } = await render(post);
     <Card class="toc-card">
       <h2 class="no-mt">Table of contents</h2>
       <ol>
-        <li class="toc-li">
-          <a href={`#_top`} class="active">{post.data.title}</a>
-        </li>
         {headings.map((heading, i) => (
           <li class="toc-li" data-depth={heading.depth}>
             <a href={`#${heading.slug}`}>{heading.text}</a>
@@ -89,7 +86,10 @@ const { Content, headings } = await render(post);
       </div>
       <Content />
       <hr class="end-of-article" />
-      <a href="/blog" class="block-link" data-pagefind-ignore>← Back to blog</a>
+      <div class="nav-buttons">
+        <a href="/blog" class="block-link" data-pagefind-ignore>← Back to blog</a>
+        <a href='https://ko-fi.com/R5R51EVGBU' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' alt='Buy Me a Coffee at ko-fi.com' /></a>
+      </div>
     </Card>
     {giscus && (
       <Card>
@@ -161,6 +161,13 @@ const { Content, headings } = await render(post);
     display: flex;
     flex-direction: column;
     gap: 2rem;
+  }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
   }
 
   .comments * {

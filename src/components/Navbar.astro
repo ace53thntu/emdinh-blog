@@ -8,6 +8,9 @@ const path = Astro.url.pathname;
   <a class="site-title" href="/">{name}</a>
   <ul>
     <li>
+      <a href="/blog" class:list={{ active: path === '/blog' }}>Blog</a>
+    </li>
+    <li>
       <input id="search" type="text" placeholder="Search (Ctrl+K)" />
       <div id="search-results"></div>
     </li>

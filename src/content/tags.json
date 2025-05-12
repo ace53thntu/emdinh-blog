@@ -1,5 +1,14 @@
 [
   {
     "id": "guide"
+  },
+  {
+    "id": "kafka"
+  },
+  {
+    "id": "nodejs"
+  },
+  {
+    "id": "performance"
   }
 ]

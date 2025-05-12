@@ -29,6 +29,34 @@ p img {
   max-width: 100%;
 }
 
+/* Make mermaid diagrams responsive */
+img[src*="mermaid"] {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  overflow-x: auto;
+  transform-origin: 0 0;
+  touch-action: manipulation; /* Enable pinch zoom */
+  transition: transform 0.3s ease;
+}
+
+/* Zoomed state for mobile */
+img[src*="mermaid"].zoomed {
+  transform: scale(1.5);
+  max-width: none;
+  cursor: zoom-out;
+}
+
+/* Add container for mermaid diagrams to enable scrolling and zooming */
+p:has(img[src*="mermaid"]) {
+  width: 100%;
+  overflow: auto;
+  display: block;
+  margin: 1.5rem 0;
+  padding-bottom: 0.5rem; /* Add space for scrollbar */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
 .toc-card {
   min-width: 0;
 }

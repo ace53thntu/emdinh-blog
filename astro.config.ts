@@ -4,6 +4,7 @@ import expressiveCode from "astro-expressive-code";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import spectre from "./package/src";
+import rehypeMermaid from "rehype-mermaid";
 
 import vercel from "@astrojs/vercel";
 import { spectreDark } from "./src/ec-theme";
@@ -23,7 +24,23 @@ export default defineConfig({
     expressiveCode({
       themes: [spectreDark],
     }),
-    mdx(),
+    mdx({
+      syntaxHighlight: {
+        type: "shiki",
+        excludeLangs: ["mermaid", "math"],
+      },
+      rehypePlugins: [
+        [
+          rehypeMermaid,
+          {
+            strategy: "img-svg",
+            mermaidConfig: {
+              theme: "dark",
+            },
+          },
+        ],
+      ],
+    }),
     sitemap({
       filter: (page) => !excludePages.includes(page),
     }),
