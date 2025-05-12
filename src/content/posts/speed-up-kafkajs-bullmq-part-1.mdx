@@ -17,7 +17,12 @@ Picture this: you’re building a high-throughput system with **KafkaJS**, proce
 
 **KafkaJS** is a modern JavaScript library for interacting with Apache Kafka, a distributed streaming platform designed for high-throughput, fault-tolerant messaging. But when slow tasks bog down your consumer, even Kafka’s robustness can’t save you from latency and rebalancing chaos. That’s where **BullMQ**, a powerful Node.js queue library backed by Redis, comes in. BullMQ allows you to offload heavy tasks to a queue, letting your Kafka consumer focus on fetching messages while workers handle the heavy lifting.
 
-In this two-part series, I’ll share how I tackled slow message processing at YaraConnect by integrating **KafkaJS** with **BullMQ** in a **NestJS** app. Part 1 explains the problem of slow tasks, introduces BullMQ as a solution. Part 2 dives into the code, including setup, and error handling. Whether you’re new to Kafka or a seasoned developer, you’ll learn practical techniques to build faster, more reliable message-processing systems. Let’s get started! 🚀
+In this two-part series, I’ll share how I tackled slow message processing at YaraConnect by integrating **KafkaJS** with **BullMQ** in a **NestJS** app.
+
+- Part 1 explains the problem of slow tasks, introduces BullMQ as a solution.
+- Part 2 dives into the code, including setup, and error handling.
+
+Whether you’re new to Kafka or a seasoned developer, you’ll learn practical techniques to build faster, more reliable message-processing systems. Let’s get started! 🚀
 
 ## The Problem: Slow Message Processing in KafkaJS
 
