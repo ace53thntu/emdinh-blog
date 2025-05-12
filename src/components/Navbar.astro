@@ -93,15 +93,24 @@ const path = Astro.url.pathname;
   searchElement?.addEventListener('input', async (e) => {
     if (e.target.dataset.loaded !== 'true') {
       try {
-        e.target.dataset.loaded = 'true';
-        window.pagefind = await import("/pagefind/pagefind.js");
-        console.log("Pagefind loaded successfully");
+      e.target.dataset.loaded = 'true';
+      window.pagefind = await import("/pagefind/pagefind.js");
+      console.log("Pagefind loaded successfully");
       } catch (error) {
-        console.error("Failed to load Pagefind:", error);
-        results.innerHTML = '<p style="margin-top: 0;">Search is currently unavailable. Please try again later.</p>';
-        results.classList.add('active');
-        return;
-      }
+      console.error("Failed to load Pagefind, attempting to load fallback:", error);
+      try {
+        window.pagefind = await import("/pagefind/pagefind-fallback.js");
+        console.log("Pagefind fallback loaded");
+          results.innerHTML = '<p style="margin-top: 0;">Search index is currently being built. Please try again later.</p>';
+            results.classList.add('active');
+            return;
+          } catch (fallbackError) {
+            console.error("Failed to load fallback:", fallbackError);
+            results.innerHTML = '<p style="margin-top: 0;">Search is currently unavailable. Please try again later.</p>';
+            results.classList.add('active');
+            return;
+          }
+        }
     }
 
     results.innerHTML = '';
