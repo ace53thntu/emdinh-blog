@@ -34,6 +34,7 @@ export default defineConfig({
     sitemap(),
     spectre({
       name: "Em Dinh",
+      themeColor: "#FF3C3C",
       openGraph: {
         home: {
           title: "Em Dinh | Software Engineer",
