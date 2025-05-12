@@ -19,9 +19,8 @@ interface Props {
 }
 
 const { title, description, image, pagefindIgnore, article } = Astro.props;
-// Use static og.png for home page, dynamic OG image for other pages
-const isHomePage = title === 'Em Dinh Blog' || title === name;
-const ogImageUrl = image?.src || (isHomePage ? '/img/og.png' : `/api/og/${encodeURIComponent(title)}`);
+// Use the dynamic OG image generator for all pages
+const ogImageUrl = image?.src || `/api/og/${encodeURIComponent(title)}`;
 const siteUrl = Astro.site?.toString() || 'https://emdinh.dev';
 const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
 ---
