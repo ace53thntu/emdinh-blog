@@ -19,6 +19,11 @@ interface Props {
 }
 
 const { title, description, image, pagefindIgnore, article } = Astro.props;
+// Use static og.png for home page, dynamic OG image for other pages
+const isHomePage = title === 'Em Dinh Blog' || title === name;
+const ogImageUrl = image?.src || (isHomePage ? '/img/og.png' : `/api/og/${encodeURIComponent(title)}`);
+const siteUrl = Astro.site?.toString() || 'https://emdinh.dev';
+const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
 ---
 
 <!DOCTYPE html>
@@ -33,25 +38,32 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 		{description && <meta name="description" content={description} />}
 		<meta name="theme-color" content={themeColor}>
 
-		<link rel="canonical" href={Astro.site} />
+		<link rel="canonical" href={currentUrl} />
 
-		<meta name="og:title" content={title} />
-		{description && <meta name="og:description" content={description} />}
-		<meta name="og:image" content={image?.src || '/img/og.png'} />
-		<meta name="og:url" content={Astro.site} />
-		{!article && <meta name="og:type" content="website" />}
-		<meta name="og:locale" content="en" />
+		<!-- OpenGraph / Facebook -->
+		<meta property="og:title" content={title} />
+		{description && <meta property="og:description" content={description} />}
+		<meta property="og:image" content={ogImageUrl} />
+		<meta property="og:url" content={currentUrl} />
+		{!article && <meta property="og:type" content="website" />}
+		<meta property="og:locale" content="en" />
+		<meta property="og:site_name" content={name} />
+		
+		<!-- Add image dimensions if needed for better sharing -->
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
 
 		{article && (
-			<meta name="og:type" content="article" />
+			<meta property="og:type" content="article" />
 			<meta property="article:published_time" content={article.createdAt.toISOString()} />
-			<meta name="author" content={name} />
+			<meta property="article:author" content={name} />
 		)}
 
 		{article && article.updatedAt && (
 			<meta property="article:modified_time" content={article.updatedAt.toISOString()} />
 		)}
 
+		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
 		{twitterHandle && (
 			<meta name="twitter:site" content={twitterHandle} />
@@ -59,7 +71,12 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 		)}
 		<meta name="twitter:title" content={title} />
 		{description && <meta name="twitter:description" content={description} />}
-		<meta name="twitter:image" content={image?.src || '/img/og.png'} />
+		<meta name="twitter:image" content={ogImageUrl} />
+		
+		<!-- LinkedIn -->
+		<meta property="linkedin:title" content={title} />
+		{description && <meta property="linkedin:description" content={description} />}
+		<meta property="linkedin:image" content={ogImageUrl} />
 	</head>
 	<body>
 		<main data-pagefind-ignore={pagefindIgnore}>
