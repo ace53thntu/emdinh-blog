@@ -92,14 +92,22 @@ const path = Astro.url.pathname;
 
   searchElement?.addEventListener('input', async (e) => {
     if (e.target.dataset.loaded !== 'true') {
-      e.target.dataset.loaded = 'true';
-
-      window.pagefind = await import("/pagefind/pagefind.js");
+      try {
+        e.target.dataset.loaded = 'true';
+        window.pagefind = await import("/pagefind/pagefind.js");
+        console.log("Pagefind loaded successfully");
+      } catch (error) {
+        console.error("Failed to load Pagefind:", error);
+        results.innerHTML = '<p style="margin-top: 0;">Search is currently unavailable. Please try again later.</p>';
+        results.classList.add('active');
+        return;
+      }
     }
 
     results.innerHTML = '';
-
-    const search = await window.pagefind.search(e.target.value);
+    
+    try {
+      const search = await window.pagefind.search(e.target.value);
 
     let i = 0;
     for (const result of search.results) {
@@ -119,6 +127,11 @@ const path = Astro.url.pathname;
     }
 
     results.classList.add('active');
+    } catch (error) {
+      console.error("Error performing search:", error);
+      results.innerHTML = '<p style="margin-top: 0;">Search error occurred. Please try again.</p>';
+      results.classList.add('active');
+    }
   });
 
   navToggle?.addEventListener('click', () => {

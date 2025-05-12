@@ -1,0 +1,4 @@
+{
+  "excludeSelectors": ["nav", "footer", ".comments", "[data-pagefind-ignore]"],
+  "verbose": true
+}
