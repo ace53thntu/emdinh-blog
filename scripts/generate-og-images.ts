@@ -77,11 +77,7 @@ async function main() {
     await generateOGImage("Em Dinh Blog", path.join(OG_IMAGE_DIR, "home.png"));
 
     // Find all content pages to generate OG images for
-    const contentFiles = [
-      ...globModule.sync("./src/pages/**/*.astro"),
-      ...globModule.sync("./src/content/posts/**/*.md"),
-      ...globModule.sync("./src/content/projects/**/*.md"),
-    ];
+    const contentFiles = [...globModule.sync("./src/pages/**/*.astro"), ...globModule.sync("./src/content/posts/**/*.md")];
 
     // Process each file to extract its title and generate an OG image
     for (const file of contentFiles) {

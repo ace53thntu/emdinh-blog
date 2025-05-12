@@ -9,13 +9,6 @@ import rehypeMermaid from "rehype-mermaid";
 import vercel from "@astrojs/vercel";
 import { spectreDark } from "./src/ec-theme";
 
-const excludePages = [
-  "https://emdinh.dev/blog/",
-  "https://emdinh.dev/projects/",
-  "https://emdinh.dev/blog/getting-started/",
-  "https://emdinh.dev/projects/spectre/",
-];
-
 // https://astro.build/config
 export default defineConfig({
   site: "https://emdinh.dev",
@@ -41,9 +34,7 @@ export default defineConfig({
         ],
       ],
     }),
-    sitemap({
-      filter: (page) => !excludePages.includes(page),
-    }),
+    sitemap(),
     spectre({
       name: "Em Dinh",
       openGraph: {
