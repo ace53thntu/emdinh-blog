@@ -54,6 +54,7 @@ const { Content, headings } = await render(post);
     createdAt: post.data.createdAt,
     updatedAt: post.data.updatedAt,
   }}
+  pagefindIgnore={false}
 >
   <div class="left" slot="left">
     <Card class="toc-card">
