@@ -1,10 +1,12 @@
 ---
 import '../styles/reset.css';
 import '../styles/globals.css';
+import '../styles/mermaid-theme.css';
 
 import Background from '../components/Background.astro';
 import Navbar from '../components/Navbar.astro';
 import LayoutGrid from '../components/LayoutGrid.astro';
+import MermaidInit from '../components/MermaidInit.astro';
 import { name, themeColor, twitterHandle } from 'spectre:globals';
 
 interface Props {
@@ -100,6 +102,9 @@ const defaultDesc = "Personal blog and portfolio of Em Dinh - Software Engineer"
 		<meta property="linkedin:title" content={title} />
 		<meta property="linkedin:description" content={description || defaultDesc} />
 		<meta property="linkedin:image" content={ogImageUrl} />
+
+		<!-- Import the Mermaid initialization component -->
+		<MermaidInit />
 	</head>
 	<body>
 		<main data-pagefind-ignore={pagefindIgnore}>

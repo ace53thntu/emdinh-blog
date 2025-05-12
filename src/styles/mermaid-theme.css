@@ -1,0 +1,44 @@
+/* Mermaid dark theme styling */
+.mermaid {
+  background-color: #24292e !important;
+}
+
+/* Force text to be white in diagrams */
+.mermaid text {
+  fill: #fff !important;
+  color: #fff !important;
+}
+
+/* Ensure diagram backgrounds are dark */
+.mermaid .label {
+  color: #fff !important;
+}
+
+/* Target specific mermaid elements */
+.mermaid rect, .mermaid polygon, .mermaid circle, .mermaid path {
+  fill: #24292e !important;
+  stroke: #FF3C3C !important;
+}
+
+.mermaid .node rect, .mermaid .node polygon, .mermaid .node circle {
+  fill: #1f2020 !important;
+  stroke: #FF3C3C !important;
+}
+
+.mermaid .cluster rect {
+  fill: #1f2020 !important;
+  stroke: #FF6666 !important;
+}
+
+.mermaid .edgeLabel {
+  background-color: #1f2020 !important;
+  color: #fff !important;
+}
+
+.mermaid .edgePath .path {
+  stroke: #FF3C3C !important;
+}
+
+.mermaid .flowchart-link {
+  stroke: #FF3C3C !important;
+} 

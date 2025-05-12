@@ -1,0 +1,49 @@
+---
+// MermaidInit.astro - Client component for mermaid initialization
+---
+
+<script>
+  // Import mermaid dynamically
+  const loadMermaid = async () => {
+    try {
+      const module = await import('mermaid');
+      const mermaid = module.default;
+      
+      // Configure mermaid with dark theme
+      mermaid.initialize({
+        startOnLoad: true,
+        securityLevel: 'loose',
+        theme: 'dark',
+        themeVariables: {
+          // Colors that match the website's primary color
+          primaryColor: '#FF3C3C',
+          // primaryTextColor: '#fff',
+          // primaryBorderColor: '#FF3C3C',
+          // lineColor: '#FF3C3C',
+          // secondaryColor: '#FF6666',
+          // tertiaryColor: '#1f2020',
+          // background: '#1f2020',
+          // mainBkg: '#1f2020',
+          // nodeBkg: '#1f2020',
+          // nodeBorder: '#FF3C3C',
+          // clusterBkg: '#1f2020',
+          // clusterBorder: '#FF6666',
+          // titleColor: '#FF3C3C',
+          // edgeLabelBackground: '#1f2020',
+          // textColor: '#fff',
+          // // Additional settings for edges
+          // edgeColor: '#FF3C3C',
+          // edgeLabelColor: '#fff'
+        }
+      });
+      
+      // Render diagrams
+      mermaid.run();
+    } catch (e) {
+      console.error('Error initializing mermaid:', e);
+    }
+  };
+  
+  // Load mermaid when the document is ready
+  document.addEventListener('DOMContentLoaded', loadMermaid);
+</script> 
