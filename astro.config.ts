@@ -27,8 +27,12 @@ export default defineConfig({
           rehypeMermaid,
           {
             strategy: "img-svg",
-            mermaidConfig: {
-              theme: "dark",
+            browser: async () => {
+              const { chromium } = await import("playwright-core");
+              return chromium.launch({
+                executablePath: "/vercel/.cache/playwright/chrome/chrome-linux/chrome",
+                args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+              });
             },
           },
         ],
