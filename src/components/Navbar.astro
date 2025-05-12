@@ -91,66 +91,34 @@ const path = Astro.url.pathname;
   });
 
   searchElement?.addEventListener('input', async (e) => {
-    try {
-      if (e.target.dataset.loaded !== 'true') {
-        e.target.dataset.loaded = 'true';
-        
-        try {
-          // Try to load pagefind directly from where it's generated
-          window.pagefind = await import("/pagefind/pagefind.js");
-          console.log("Pagefind loaded successfully");
-        } catch (error) {
-          console.error("Failed to load pagefind:", error);
-          
-          // Try an alternative path as fallback
-          try {
-            window.pagefind = await import("/pagefind/pagefind.js");
-            console.log("Pagefind loaded from fallback path");
-          } catch (secondError) {
-            console.error("Failed to load pagefind from fallback path:", secondError);
-            results.innerHTML = '<p style="margin-top: 0;">Search functionality unavailable</p>';
-            results.classList.add('active');
-            return;
-          }
-        }
-      }
+    if (e.target.dataset.loaded !== 'true') {
+      e.target.dataset.loaded = 'true';
 
-      results.innerHTML = '';
-      
-      if (!window.pagefind || !window.pagefind.search) {
-        console.error("Pagefind not properly loaded");
-        results.innerHTML = '<p style="margin-top: 0;">Search functionality unavailable</p>';
-        results.classList.add('active');
-        return;
-      }
-
-      const search = await window.pagefind.search(e.target.value);
-
-      let i = 0;
-      for (const result of search.results) {
-        i++;
-
-        const data = await result.data();
-        
-        results.innerHTML += `
-          <a href="${data.url}">
-            <h3 class="no-mt">${data.meta.title}</h3>
-            <p>${data.excerpt}</p>
-          </a>
-          ${i < search.results.length ? '<hr class="separator">' : ''}
-        `;
-      }
-
-      if (search.results.length === 0 && e.target.value.length > 0) {
-        results.innerHTML = '<p style="margin-top: 0;">No results found</p>';
-      }
-
-      results.classList.add('active');
-    } catch (error) {
-      console.error("Search error:", error);
-      results.innerHTML = '<p style="margin-top: 0;">Search error occurred</p>';
-      results.classList.add('active');
+      window.pagefind = await import("/pagefind/pagefind.js");
     }
+
+    results.innerHTML = '';
+
+    const search = await window.pagefind.search(e.target.value);
+
+    let i = 0;
+    for (const result of search.results) {
+      i++;
+      const data = await result.data();
+      results.innerHTML += `
+        <a href="${data.url}">
+          <h3 class="no-mt">${data.meta.title}</h3>
+          <p>${data.excerpt}</p>
+        </a>
+        ${i < search.results.length ? '<hr class="separator">' : ''}
+      `;
+    }
+
+    if (search.results.length === 0 && e.target.value.length > 0) {
+      results.innerHTML = '<p style="margin-top: 0;">No results found</p>';
+    }
+
+    results.classList.add('active');
   });
 
   navToggle?.addEventListener('click', () => {

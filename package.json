@@ -9,7 +9,7 @@
     "start": "node dist/server/entry.mjs",
     "preview": "astro preview",
     "astro": "astro",
-    "postbuild": "pagefind --site dist/client && mkdir -p dist/client/public && cp -r dist/client/pagefind dist/client/public/ || true",
+    "postbuild": "pagefind --site dist/client",
     "generate-og": "tsx scripts/generate-og-images.ts"
   },
   "dependencies": {
