@@ -5,7 +5,7 @@
   "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "pnpm exec playwright install-deps",
+    "prebuild": "node -e \"process.env.VERCEL ? require('child_process').execSync('pnpm exec playwright install --with-deps=false', {stdio: 'inherit'}) : require('child_process').execSync('pnpm exec playwright install-deps', {stdio: 'inherit'})\"",
     "build": "astro build",
     "start": "node dist/server/entry.mjs",
     "preview": "astro preview",
