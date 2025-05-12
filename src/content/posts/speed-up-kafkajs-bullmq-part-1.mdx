@@ -120,7 +120,7 @@ Here’s the gist: instead of processing `processRetailerTransaction` in the `ea
 - **Complexity**: Managing multiple queues and Redis adds infrastructure overhead
 - **Redis dependency**: We need a Redis instance, which might be new for some teammates
 
-**Why It Rocks**: At YaraConnect, we already had Redis running in our cluster. And this approach worked like a charm, resolve the rebalance issue. Plus, BullMQ’s retry mechanism saved us from flaky API calls—talk about a win! 🎉. Apart from that, with BullMQ Dashboard we can monitor the queues and workers as well.
+**Why It Rocks**: At YaraConnect, we already had Redis running in our cluster. So we don't need to worry about the infrastructure overhead. And this approach worked like a charm, resolve the rebalance issue. Plus, BullMQ’s retry mechanism saved us from flaky API calls—talk about a win! 🎉. Apart from that, with BullMQ Dashboard we can monitor the queues and workers as well.
 
 Here’s a sneak peek at the data flow:
 
