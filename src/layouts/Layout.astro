@@ -22,6 +22,7 @@ interface Props {
 
 const { title, description, image, pagefindIgnore, article } = Astro.props;
 const isHomePage = Astro.url.pathname === "/" || Astro.url.pathname === "";
+const isBlogPost = Astro.url.pathname.startsWith("/blog/") && !Astro.url.pathname.endsWith("/blog/");
 
 // Get the current path to determine which OG image to use
 const currentPath = Astro.url.pathname;
@@ -103,8 +104,8 @@ const defaultDesc = "Personal blog and portfolio of Em Dinh - Software Engineer"
 		<meta property="linkedin:description" content={description || defaultDesc} />
 		<meta property="linkedin:image" content={ogImageUrl} />
 
-		<!-- Import the Mermaid initialization component -->
-		<MermaidInit />
+		<!-- Only load Mermaid on blog post pages -->
+		{isBlogPost && <MermaidInit />}
 	</head>
 	<body>
 		<main data-pagefind-ignore={pagefindIgnore}>
