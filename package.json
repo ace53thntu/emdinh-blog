@@ -5,7 +5,7 @@
   "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "pnpm exec playwright install",
+    "prebuild": "pnpm exec playwright install-deps",
     "build": "astro build",
     "start": "node dist/server/entry.mjs",
     "preview": "astro preview",
