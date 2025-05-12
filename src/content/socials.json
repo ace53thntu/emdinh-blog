@@ -29,10 +29,10 @@
   {
     "id": 3,
     "icon": {
-      "type": "lucide",
-      "name": "twitter"
+      "type": "simple-icons",
+      "name": "x"
     },
-    "text": "Twitter",
+    "text": "X",
     "link": "https://x.com/emladev"
   }
 ]
