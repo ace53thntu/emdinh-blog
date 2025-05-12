@@ -6,7 +6,6 @@ import Background from '../components/Background.astro';
 import Navbar from '../components/Navbar.astro';
 import LayoutGrid from '../components/LayoutGrid.astro';
 import { name, themeColor, twitterHandle } from 'spectre:globals';
-import path from 'path';
 
 interface Props {
 	title: string;
@@ -42,6 +41,7 @@ const siteUrl = Astro.site?.toString() || 'https://emdinh.dev';
 const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
 // Ensure OG image URL is absolute for social sharing
 const ogImageUrl = new URL(ogImagePath, siteUrl).toString();
+const defaultDesc = "Personal blog and portfolio of Em Dinh - Software Engineer";
 ---
 
 <!DOCTYPE html>
@@ -60,16 +60,17 @@ const ogImageUrl = new URL(ogImagePath, siteUrl).toString();
 
 		<!-- OpenGraph / Facebook -->
 		<meta property="og:title" content={title} />
-		{description && <meta property="og:description" content={description} />}
+		<meta property="og:description" content={description || defaultDesc} />
 		<meta property="og:image" content={ogImageUrl} />
 		<meta property="og:url" content={currentUrl} />
 		{!article && <meta property="og:type" content="website" />}
 		<meta property="og:locale" content="en" />
 		<meta property="og:site_name" content={name} />
 		
-		<!-- Add image dimensions if needed for better sharing -->
+		<!-- Add image dimensions for better sharing -->
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content={`${title} | ${name}`} />
 
 		{article && (
 			<meta property="og:type" content="article" />
@@ -81,19 +82,19 @@ const ogImageUrl = new URL(ogImagePath, siteUrl).toString();
 			<meta property="article:modified_time" content={article.updatedAt.toISOString()} />
 		)}
 
-		<!-- Twitter -->
+		<!-- Twitter / X -->
 		<meta name="twitter:card" content="summary_large_image" />
-		{twitterHandle && (
-			<meta name="twitter:site" content={twitterHandle} />
-			<meta name="twitter:creator" content={twitterHandle} />
-		)}
+		<meta name="twitter:site" content={twitterHandle || "@emdinh_"} />
+		<meta name="twitter:creator" content={twitterHandle || "@emdinh_"} />
 		<meta name="twitter:title" content={title} />
-		{description && <meta name="twitter:description" content={description} />}
+		<meta name="twitter:description" content={description || defaultDesc} />
 		<meta name="twitter:image" content={ogImageUrl} />
+		<meta name="twitter:image:alt" content={`${title} | ${name}`} />
+		<meta name="twitter:domain" content={siteUrl.replace(/^https?:\/\//, '')} />
 		
 		<!-- LinkedIn -->
 		<meta property="linkedin:title" content={title} />
-		{description && <meta property="linkedin:description" content={description} />}
+		<meta property="linkedin:description" content={description || defaultDesc} />
 		<meta property="linkedin:image" content={ogImageUrl} />
 	</head>
 	<body>
