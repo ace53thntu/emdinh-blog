@@ -52,7 +52,7 @@ async function generateOGImage(title: string, outputPath: string) {
     fonts: [
       {
         name: "Inter",
-        data: readFileSync("./public/fonts/Inter_18pt-Regular.ttf"),
+        data: readFileSync("./public/fonts/GeistMono-SemiBold.ttf"),
         style: "normal",
       },
     ],
