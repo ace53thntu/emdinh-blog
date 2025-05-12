@@ -1,42 +1,64 @@
-![Spectre, a terminal-inspired theme for Astro.](./images/README.png)
+# emdinh-blog
 
-Spectre is a terminal-inspired theme for Astro, built using TypeScript and Astro.
-
-## Getting Started
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/louisescher/spectre/tree/main)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/louisescher/spectre/tree/main)
-
-Alternatively, you can create a new Astro project with Spectre like this:
-
-```bash
-# pnpm
-pnpm create astro@latest -- --template louisescher/spectre
-
-# pnpm
-pnpm create astro@latest --template louisescher/spectre
-
-# yarn
-yarn create astro --template louisescher/spectre
-```
+A personal blog built with Astro, inspired by the terminal-aesthetic of [Spectre](https://github.com/louisescher/spectre).
 
 ## Features
 
-- 100 / 100 Lighthouse performance
-- Responsive for all screen sizes
-- Fully accessible
-- Type-Safe
-- Auto-generated sitemap
-- Markdown / MDX Support
-- Builds on content collections
-- Search powered by [pagefind](https://pagefind.app)
-- Comments powered by [giscus](https://giscus.app) (can be turned off)
-- More!
+- ⚡️ 100/100 Lighthouse performance
+- 📱 Responsive design for all screen sizes
+- ♿ Fully accessible
+- 🔍 Type-safe content using Astro content collections
+- 🔎 Search functionality powered by [pagefind](https://pagefind.app)
+- 📝 Markdown and MDX support with code highlighting
+- 🖼️ Automatic OG image generation
+- 🗺️ Auto-generated sitemap
+- 📊 Mermaid diagram support
+- 🚀 Deployed on Vercel
 
-## Curious?
+## Getting Started
 
-Head over to [the preview page](https://spectre.louisescher.dev) to find out more!
+```bash
+# Install dependencies
+pnpm install
 
-### Spectre Integration
+# Start development server
+pnpm dev
 
-If you want to know more about how the custom integration that is used in the `astro.config.ts` file works, head over to the [integration's own README](https://github.com/louisescher/spectre/tree/master/package)!
+# Build for production
+pnpm build
+
+# Generate OG images
+pnpm generate-og
+```
+
+## Project Structure
+
+```
+/
+├── public/          # Static assets
+├── src/
+│   ├── assets/      # Images and other assets
+│   ├── components/  # UI components
+│   ├── content/     # Blog posts and other content
+│   ├── layouts/     # Page layouts
+│   ├── pages/       # Page components
+│   └── styles/      # Global styles
+└── package/         # Custom Astro integration
+```
+
+## Tech Stack
+
+- [Astro](https://astro.build) - Web framework
+- [MDX](https://mdxjs.com) - Markdown with JSX
+- [Pagefind](https://pagefind.app) - Search functionality
+- [Shiki](https://shiki.matsu.io) - Code highlighting
+- [Mermaid](https://mermaid.js.org) - Diagrams
+- [Satori](https://github.com/vercel/satori) - OG image generation
+
+## License
+
+MIT
+
+---
+
+*"Where code meets creativity, a terminal-inspired blog emerges from the digital shadows."* - Inspired by Spectre
